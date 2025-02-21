@@ -1,0 +1,18 @@
+[project]
+name = "v2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "alembic>=1.14.1",
+    "asyncpg>=0.30.0",
+    "fastapi[standard]>=0.115.8",
+    "langchain>=0.3.19",
+    "langchain-ollama>=0.2.3",
+    "pgvector>=0.3.6",
+    "pydantic-settings>=2.7.1",
+    "sqlalchemy[asyncio]>=2.0.38",
+    "sqlmodel>=0.0.22",
+    "tiktoken>=0.9.0",
+]
