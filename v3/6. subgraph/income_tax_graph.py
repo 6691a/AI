@@ -254,10 +254,3 @@ graph_builder.add_conditional_edges(
 graph_builder.add_edge('rewrite', 'retrieve')
 graph = graph_builder.compile()
 
-graph_image = graph.get_graph().draw_mermaid_png()
-with open('graph.png', 'wb') as f:
-    f.write(graph_image)
-
-ai_message = graph.invoke(AgentState(query="연봉 5천만원인 거주자가 납부해야 하는 소득세는 얼마인가요?"))
-pprint(ai_message)
-
