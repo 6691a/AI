@@ -16,10 +16,16 @@ class DeepSeekR1:
     def __init__(
             self,
             parameter: DeepSeekR1Params,
+            num_predict: int = None,
             temperature: float = None,
             stop: list[str] = None
     ):
-        self.llm = ChatOllama(model=parameter.value, temperature=temperature, stop=stop)
+        self.llm = ChatOllama(
+            model=parameter.value,
+            num_predict=num_predict,
+            temperature=temperature,
+            stop=stop
+        )
 
     def __call__(self) -> ChatOllama:
         return self.llm

@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from langchain_core.language_models.chat_models import BaseChatModel
 from langgraph.graph import StateGraph
 from langgraph.graph.state import CompiledStateGraph
+from langchain_core.prompts import ChatPromptTemplate
 
 from graph.base.state import Language, BaseState
 
@@ -44,6 +45,20 @@ class BaseGraph(ABC):
         def get_language_model(self, state: BaseState, **kwargs):
             if language == Language.KOR:
                 return ChatOllama(model="llama3.2")
+        """
+
+    @abstractmethod
+    def get_language_prompt(self, language: Language, **kwargs) -> ChatPromptTemplate:
+        """
+        BaseState["language"]의 설정을 통해 언어 번역 시 사용될 프롬프트 반환
+
+        Example:
+        def get_language_prompt(self, state: BaseState, **kwargs):
+            if language == Language.KOR:
+                return ChatPromptTemplate.from_messages([
+                    ("system", "한국어로 번역된 질문이 있습니다. 영어로 번역해주세요."),
+                    ("human", "{question}")
+                ])
         """
 
     def graph_complete(self, *args, **kwargs) -> CompiledStateGraph:
